@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Edit Student</h1>
+<form action="{{ url_for('edit_student', id=student._id) }}" method="post">
+    <!-- Hidden SRN field -->
+    <input type="hidden" name="srn" value="{{ student.srn }}" required>
+
+    <input type="text" name="name" value="{{ student.name }}" required>
+    <input type="number" name="age" value="{{ student.age }}" required>
+    <input type="number" name="number" value="{{ student.number }}" required>
+
+    {% for sem in student.semesters %}
+    <h2>Semester {{ sem.semester }}</h2>
+    {% for subj in sem.subjects %}
+    <h3>{{ subj.subject }}</h3>
+    <input type="number" name="sem{{ sem.semester }}_{{ subj.subject }}_marks_obtained" value="{{ subj.marks_obtained }}" required>
+    <input type="number" name="sem{{ sem.semester }}_{{ subj.subject }}_max_marks" value="{{ subj.max_marks }}" required>
+    {% endfor %}
+    {% endfor %}
+
+    <button type="submit">Update Student</button>
+</form>
+<a href="{{ url_for('index') }}">Back to Dashboard</a>
+{% endblock %}
