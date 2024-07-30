@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Add Student</h1>
+<form action="{{ url_for('add_student') }}" method="post">
+    <input type="text" name="srn" placeholder="SRN (3-digit number)" pattern="\d{3}" required>
+    <input type="text" name="name" placeholder="Name" required>
+    <input type="number" name="age" placeholder="Age" required>
+    <input type="number" name="number" placeholder="Phone Number" required>
+
+    {% for sem in range(1, 4) %}
+    <h2>Semester {{ sem }}</h2>
+    {% for subj in ['Math', 'Science', 'English'] %}
+    <h3>{{ subj }}</h3>
+    <input type="number" name="sem{{ sem }}_{{ subj }}_marks_obtained" placeholder="Marks Obtained" required>
+    <input type="number" name="sem{{ sem }}_{{ subj }}_max_marks" placeholder="Max Marks" required>
+    {% endfor %}
+    {% endfor %}
+
+    <button type="submit">Add Student</button>
+</form>
+{% endblock %}
