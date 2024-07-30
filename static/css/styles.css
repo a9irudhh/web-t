@@ -31,10 +31,11 @@ h1 {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 300px;
     text-align: center;
+    margin-top: 200px;
 }
 
 .login-container h2 {
-    margin-bottom: 20px;
+    margin-bottom: 50px;
 }
 
 .login-container form {
@@ -64,7 +65,7 @@ h1 {
 }
 
 .login-container button:hover {
-    background-color: #45a049;
+    background-color: #27702a;
 }
 
 .login-container ul {
@@ -126,10 +127,12 @@ h1 {
 
 .edit-button {
     background-color: #28A745; /* Green */
+    margin-left: 20px;
 }
 
 .delete-button {
     background-color: #DC3545; /* Red */
+    margin-left: 30px;
 }
 
 
