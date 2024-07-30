@@ -16,7 +16,7 @@ body {
     width: 80%;
     max-width: 1000px;
     text-align: center;
-    margin-top: 20px; /* Adjust this value for space from the top */
+    margin-top: 60px; /* Adjust this value for space from the top */
     /* Remove margin-bottom to ensure it starts from the top */
 }
 
@@ -24,56 +24,74 @@ h1 {
     margin-bottom: 20px;
 }
 
+/* Container for the login page */
 .login-container {
-    background-color: #fff;
+    max-width: 500px;
+    margin: 0 auto;
     padding: 20px;
-    border-radius: 8px;
+    background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 300px;
-    text-align: center;
+    border-radius: 8px;
     margin-top: 200px;
 }
 
-.login-container h2 {
-    margin-bottom: 50px;
+/* Title for the login form */
+.login-title {
+    margin-top: 0;
+    font-size: 2em;
+    color: #333;
 }
 
-.login-container form {
+/* Form styling */
+.login-form {
     display: flex;
     flex-direction: column;
 }
 
-.login-container label {
-    text-align: left;
-    margin-bottom: 5px;
-}
-
-.login-container input {
+.form-group {
     margin-bottom: 15px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
 }
 
-.login-container button {
+.form-label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-input {
+    width: 100%;
     padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.submit-button {
+    padding: 10px 15px;
+    border: none;
     background-color: #4CAF50;
     color: white;
-    border: none;
-    border-radius: 4px;
     cursor: pointer;
+    border-radius: 4px;
 }
 
-.login-container button:hover {
-    background-color: #27702a;
+.submit-button:hover {
+    background-color: #45a049;
 }
 
-.login-container ul {
-    list-style-type: none;
-    padding: 0;
-    color: red;
-    margin-top: 10px;
+.register-redirect {
+    margin-top: 20px;
 }
+
+.register-link {
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+.register-link:hover {
+    text-decoration: underline;
+}
+
 
 .top-actions {
     display: flex;
@@ -181,25 +199,95 @@ h1 {
     background-color: #45a049;
 }
 
+/* Container for the registration page */
+.register-container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin-top: 200px;
+}
+
+/* Title for the registration form */
+.register-title {
+    margin-top: 0;
+    font-size: 2em;
+    color: #333;
+}
+
+/* Form styling */
+.register-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.submit-button {
+    padding: 10px 15px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.submit-button:hover {
+    background-color: #45a049;
+}
+
+.login-redirect {
+    margin-top: 20px;
+}
+
+.login-link {
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+.login-link:hover {
+    text-decoration: underline;
+}
+
 /* Flash messages styling */
 .flash-messages {
-    list-style-type: none;
+    list-style: none;
     padding: 0;
-    margin-bottom: 20px;
+    margin-top: 20px;
 }
 
 .flash-messages li {
+    margin-bottom: 10px;
     padding: 10px;
     border-radius: 4px;
-    color: white;
 }
 
-.flash-messages .error {
-    background-color: #DC3545; /* Red */
+.flash-messages li.error {
+    background-color: #f8d7da;
+    color: #721c24;
 }
 
-.flash-messages .info {
-    background-color: #007BFF; /* Blue */
+.flash-messages li.success {
+    background-color: #d4edda;
+    color: #155724;
 }
 
 /* Adjust size of marks input fields */
@@ -218,3 +306,4 @@ h1 {
 .subject-wrapper {
     margin-bottom: 20px; /* Increase space between each subject */
 }
+

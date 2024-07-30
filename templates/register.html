@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Register</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
-    <div class="container login-container">
-        <h1 class="login-title">Login</h1>
-        <form method="POST" class="login-form">
+    <div class="container register-container">
+        <h1 class="register-title">Register</h1>
+        <form method="POST" class="register-form">
             <div class="form-group">
                 <label for="username" class="form-label">Username:</label>
                 <input type="text" id="username" name="username" class="form-input" required>
@@ -18,9 +18,9 @@
                 <label for="password" class="form-label">Password:</label>
                 <input type="password" id="password" name="password" class="form-input" required>
             </div>
-            <button type="submit" class="submit-button">Login</button>
+            <button type="submit" class="submit-button">Register</button>
         </form>
-        <p class="register-redirect">Don't have an account? <a href="{{ url_for('register') }}" class="register-link">Register here</a></p>
+        <p class="login-redirect">Already have an account? <a href="{{ url_for('login') }}" class="login-link">Login here</a></p>
         {% with messages = get_flashed_messages(with_categories=True) %}
             {% if messages %}
                 <ul class="flash-messages">
