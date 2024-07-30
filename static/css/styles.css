@@ -2,10 +2,26 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start; /* Align items to the top */
     height: 100vh;
     margin: 0;
     background-color: #f4f4f4;
+}
+
+.container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 1000px;
+    text-align: center;
+    margin-top: 20px; /* Adjust this value for space from the top */
+    /* Remove margin-bottom to ensure it starts from the top */
+}
+
+h1 {
+    margin-bottom: 20px;
 }
 
 .login-container {
@@ -56,4 +72,146 @@ body {
     padding: 0;
     color: red;
     margin-top: 10px;
+}
+
+.top-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.add-student-button, .logout-button {
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 4px;
+    color: white;
+}
+
+.add-student-button {
+    background-color: #4CAF50; /* Green */
+}
+
+.logout-button {
+    background-color: #FF5733; /* Red */
+}
+
+.student-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.student-table th, .student-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.student-table th {
+    background-color: #f2f2f2;
+}
+
+.action-button {
+    margin: 0 5px;
+    padding: 5px 10px;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.view-button {
+    background-color: #007BFF; /* Blue */
+}
+
+.edit-button {
+    background-color: #28A745; /* Green */
+}
+
+.delete-button {
+    background-color: #DC3545; /* Red */
+}
+
+
+/* Add Student page container styling */
+.add-student-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 700px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+/* Title styling */
+.page-title {
+    margin-bottom: 20px;
+}
+
+/* Form styling */
+.student-form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Input styling */
+.form-input {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Button styling */
+.submit-button {
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.submit-button:hover {
+    background-color: #45a049;
+}
+
+/* Flash messages styling */
+.flash-messages {
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.flash-messages li {
+    padding: 10px;
+    border-radius: 4px;
+    color: white;
+}
+
+.flash-messages .error {
+    background-color: #DC3545; /* Red */
+}
+
+.flash-messages .info {
+    background-color: #007BFF; /* Blue */
+}
+
+/* Adjust size of marks input fields */
+.subject-wrapper .form-input {
+    flex: 1;
+    margin-right: 10px;
+    max-width: 170px; /* Adjust the width as needed */
+}
+
+/* Add space between subject names and input fields */
+.subject-title {
+    margin-bottom: 10px; /* Add space below subject names */
+}
+
+/* Add more space between subject wrappers */
+.subject-wrapper {
+    margin-bottom: 20px; /* Increase space between each subject */
 }
