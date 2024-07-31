@@ -2,7 +2,7 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     display: flex;
     justify-content: center;
-    align-items: flex-start; /* Align items to the top */
+    align-items: flex-start;
     height: 100vh;
     margin: 0;
     background-color: #f4f4f4;
@@ -16,8 +16,7 @@ body {
     width: 80%;
     max-width: 1000px;
     text-align: center;
-    margin-top: 60px; /* Adjust this value for space from the top */
-    /* Remove margin-bottom to ensure it starts from the top */
+    margin-top: 60px;
 }
 
 h1 {
@@ -92,7 +91,6 @@ h1 {
     text-decoration: underline;
 }
 
-
 .top-actions {
     display: flex;
     justify-content: space-between;
@@ -131,6 +129,7 @@ h1 {
 }
 
 .action-button {
+    display: inline-block;
     margin: 0 5px;
     padding: 5px 10px;
     color: white;
@@ -145,14 +144,13 @@ h1 {
 
 .edit-button {
     background-color: #28A745; /* Green */
-    margin-left: 20px;
+    margin-left: 10px;
 }
 
 .delete-button {
     background-color: #DC3545; /* Red */
-    margin-left: 30px;
+    margin-left: 10px;
 }
-
 
 /* Add Student page container styling */
 .add-student-container {
@@ -307,3 +305,399 @@ h1 {
     margin-bottom: 20px; /* Increase space between each subject */
 }
 
+/* Container for the view student page */
+.view-student-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 700px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.view-student-title {
+    margin-bottom: 20px;
+}
+
+.view-student-info {
+    margin-bottom: 10px;
+    font-size: 1.1em;
+}
+
+.view-student-semester {
+    margin-bottom: 20px;
+}
+
+.view-student-semester-title {
+    margin-bottom: 10px;
+}
+
+.view-student-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.view-student-table th, .view-student-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.view-student-table th {
+    background-color: #f2f2f2;
+}
+
+.view-student-actions {
+    margin-top: 20px;
+}
+
+.view-student-action-button {
+    margin-right: 10px;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+}
+
+.view-student-action-button:hover {
+    background-color: #0056b3;
+}
+
+.edit-student-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 700px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.edit-student-title {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.edit-student-form {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.edit-student-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.edit-student-form input,
+.edit-student-form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.edit-student-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.edit-student-form button:hover {
+    background-color: #45a049;
+}
+
+/* Ensure proper table layout in the edit form */
+.edit-student-form table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.edit-student-form table th,
+.edit-student-form table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.edit-student-form table th {
+    background-color: #f2f2f2;
+}
+
+.edit-student-form table input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 5px;
+    margin: 0;
+    border: none;
+    outline: none;
+}
+
+.edit-buttons {
+    display: flex;
+    justify-content: center;
+}
+
+.edit-buttons .view-button {
+    margin-right: 10px;
+}
+.edit-buttons .delete-button {
+    margin-left: 10px;
+}
+
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px; /* Adjust this value for space from the top */
+    padding: 20px; /* Add padding for content spacing */
+}
+.dashboard-container h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.dashboard-container .top-actions {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 20px;
+}
+.dashboard-container .top-actions a {
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 4px;
+    color: white;
+}
+.dashboard-container .top-actions .add-student-button {
+    background-color: #4CAF50; /* Green */
+}
+.dashboard-container .top-actions .logout-button {
+    background-color: #FF5733; /* Red */
+}
+.dashboard-container .student-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+.dashboard-container .student-table th, .dashboard-container .student-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+.dashboard-container .student-table th {
+    background-color: #f2f2f2;
+}
+.dashboard-container .action-button {
+    display: inline-block;
+    margin: 0 5px;
+    padding: 5px 10px;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.dashboard-container .view-button {
+    background-color: #007BFF; /* Blue */
+}
+.dashboard-container .edit-button {
+    background-color: #28A745; /* Green */
+    margin-left: 10px;
+}
+.dashboard-container .delete-button {
+    background-color: #DC3545; /* Red */
+    margin-left: 10px;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    .container, .login-container, .register-container, .add-student-container, .view-student-container {
+        width: 90%;
+    }
+    .dashboard-container {
+        margin-top: 20px; /* Reduce space from the top */
+        padding: 10px; /* Reduce padding for content spacing */
+        margin-left: 200px;
+        margin-right: 100px;
+    }
+    .dashboard-container .top-actions {
+        display: flex;
+        flex-direction: row; /* Ensure buttons are side by side */
+        justify-content: space-between; /* Maintain spacing */
+        width: 100%;
+    }
+    .dashboard-container .top-actions a {
+        padding: 10px 10px;
+        text-align: center;
+        flex: 1;
+        margin: 0 5px; /* Add margin to space buttons */
+    }
+    .dashboard-container .student-table th, .dashboard-container .student-table td {
+        padding: 5px; /* Reduce padding in table cells */
+    }
+    .dashboard-container .action-button {
+        padding: 7px; /* Reduce padding in action buttons */
+        margin: 5px 0; /* Adjust margin for vertical spacing */
+    }
+    .dashboard-container .view-button, .dashboard-container .edit-button, .dashboard-container .delete-button {
+        margin-left: 0; /* Reset margin for action buttons */
+    }
+}
+
+
+/* General styles for the form */
+.add-student-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.page-title {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.form-input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.submit-button {
+    background-color: #4CAF50; /* Green color */
+    color: white;
+    border: none;
+    padding: 15px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px 0;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.add-semester-button {
+    background-color: #4CAF50; /* Green color */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 10px 0;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.add-subject-button {
+    background-color: #4CAF50; /* Green color */
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 5px 0;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.semester {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #e8f5e9; /* Light green background */
+    border-radius: 5px;
+}
+
+.subject-wrapper {
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #f1f8e9; /* Lighter green background */
+    border-radius: 5px;
+}
+
+.subject-title {
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.subject-wrapper input.form-input {
+    margin-right: 10px;
+}
+
+
+.remove-subject-button {
+    background-color: #f44336; /* Red color */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin-left: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.remove-subject-button:hover {
+    background-color: #c62828; /* Darker red on hover */
+}
+
+
+/* Green button style for adding */
+.add-subject-button, .add-semester-button {
+    background-color: #28a745; /* Green */
+}
+
+/* Red button style for removing */
+.remove-subject-button, .remove-semester-button {
+    background-color: #dc3545; /* Red */
+    padding: 5px 10px;
+}
+
+/* Other styles */
+.form-input {
+    margin: 5px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.subject-wrapper, .semester {
+    margin-bottom: 15px;
+}
+
+.subject-title, .semester-title {
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.remove-semester-button {
+    background-color: #dc3545; /* Red */
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+}

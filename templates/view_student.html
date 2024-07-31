@@ -1,31 +1,50 @@
-{% extends 'base.html' %}
-
-{% block content %}
-<h1>Student Details</h1>
-<p>SRN: {{ student.srn }}</p>
-<p>Name: {{ student.name }}</p>
-<p>Age: {{ student.age }}</p>
-{% for sem in student.semesters %}
-<h2>Semester {{ sem.semester }}</h2>
-<table>
-    <thead>
-        <tr>
-            <th>Subject</th>
-            <th>Marks Obtained</th>
-            <th>Max Marks</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for subj in sem.subjects %}
-        <tr>
-            <td>{{ subj.subject }}</td>
-            <td>{{ subj.marks_obtained }}</td>
-            <td>{{ subj.max_marks }}</td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
-{% endfor %}
-<a href="{{ url_for('edit_student', id=student._id) }}">Edit</a>
-<a href="{{ url_for('index') }}">Back to Dashboard</a>
-{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Management System - View Student</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="view-student-container">
+        <h1 class="view-student-title">Student Details</h1>
+        <p class="view-student-info"><strong>SRN:</strong> {{ student.srn }}</p>
+        <p class="view-student-info"><strong>Name:</strong> {{ student.name }}</p>
+        <p class="view-student-info"><strong>Age:</strong> {{ student.age }}</p>
+        
+        {% if student.semesters %}
+            {% for sem in student.semesters %}
+            <div class="view-student-semester">
+                <h2 class="view-student-semester-title">Semester {{ sem.semester }}</h2>
+                <table class="view-student-table">
+                    <thead>
+                        <tr>
+                            <th>Subject</th>
+                            <th>Marks Obtained</th>
+                            <th>Max Marks</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for subj in sem.subjects %}
+                        <tr>
+                            <td>{{ subj.subject }}</td>
+                            <td>{{ subj.marks_obtained }}</td>
+                            <td>{{ subj.max_marks }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% endfor %}
+        {% else %}
+            <p>No semester data available.</p>
+        {% endif %}
+        
+        <div class="view-student-actions">
+            <a href="{{ url_for('edit_student', id=student._id) }}" class="view-student-action-button">Edit</a>
+            <a href="{{ url_for('index') }}" class="view-student-action-button">Back to Dashboard</a>
+        </div>
+    </div>
+</body>
+</html>

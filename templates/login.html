@@ -23,10 +23,9 @@
         <p class="register-redirect">Don't have an account? <a href="{{ url_for('register') }}" class="register-link">Register here</a></p>
         {% with messages = get_flashed_messages(with_categories=True) %}
             {% if messages %}
+                {% set last_message = messages[-1] %}
                 <ul class="flash-messages">
-                    {% for category, message in messages %}
-                        <li class="{{ category }}">{{ message }}</li>
-                    {% endfor %}
+                    <li class="{{ last_message[0] }}">{{ last_message[1] }}</li>
                 </ul>
             {% endif %}
         {% endwith %}

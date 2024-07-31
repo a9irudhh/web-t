@@ -49,16 +49,16 @@ def register():
     
     return render_template('register.html')
 
-@app.route('/index', methods=['GET', 'POST'])
+@app.route('/index')
 def index():
     if 'username' not in session:
         return redirect(url_for('login'))
-    
-    if request.method == 'POST':
-        # Handle form submission here if needed
-        pass
-    
-    return render_template('index.html')
+
+    # Fetch all student documents from the database
+    student_list = list(students.find())
+    print("Student List:", student_list)  # Debugging line to check the data
+
+    return render_template('index.html', students=student_list)
 
 @app.route('/add_student', methods=['GET', 'POST'])
 def add_student():
@@ -67,36 +67,50 @@ def add_student():
 
     if request.method == 'POST':
         data = request.form
-        srn = f"SRN{int(data['srn']):03d}"
-
+        srn = data['srn']
+        
+        # Check if the student already exists
         if students.find_one({'srn': srn}):
             flash('A student with this SRN already exists.', 'error')
             return redirect(url_for('add_student'))
 
         total_marks_obtained = 0
         total_max_marks = 0
-
         semesters = []
-        for sem in range(1, 4):  # Assuming 3 semesters
-            subjects = [{'subject': subj,
-                         'marks_obtained': int(data[f'sem{sem}_{subj}_marks_obtained']),
-                         'max_marks': int(data[f'sem{sem}_{subj}_max_marks'])}
-                        for subj in ['Math', 'Science', 'English']]
-            
-            # Calculate total marks and max marks
-            for subj in subjects:
-                total_marks_obtained += subj['marks_obtained']
-                total_max_marks += subj['max_marks']
-            
+
+        # Determine the number of semesters
+        sem_keys = [key for key in data.keys() if key.startswith('sem') and '_subject' in key]
+        sem_count = max(int(key.split('_')[0].replace('sem', '')) for key in sem_keys) if sem_keys else 0
+        
+        for sem in range(1, sem_count + 1):
+            subjects = []
+            subject_names = []
+            marks_obtained = []
+
+            # Extract subject names and marks for the current semester
+            idx = 1
+            while f'sem{sem}_subject{idx}_name' in data:
+                subject_names.append(data.get(f'sem{sem}_subject{idx}_name'))
+                marks_obtained.append(data.get(f'sem{sem}_subject{idx}_marks_obtained'))
+                idx += 1
+
+            max_marks = [100] * len(subject_names)  # Default max_marks is 100
+
+            for name, obtained in zip(subject_names, marks_obtained):
+                subjects.append({
+                    'subject': name,
+                    'marks_obtained': int(obtained),
+                    'max_marks': 100
+                })
+                total_marks_obtained += int(obtained)
+                total_max_marks += 100
+
             semesters.append({'semester': sem, 'subjects': subjects})
 
-        # Calculate average percentage
-        if total_max_marks > 0:
-            percentage = (total_marks_obtained / total_max_marks) * 100
-        else:
-            percentage = 0
+        # Calculate percentage and grade
+        percentage = (total_marks_obtained / total_max_marks) * 100 if total_max_marks > 0 else 0
 
-        # Determine the grade
+        grade = 'F'
         if percentage >= 90:
             grade = 'A'
         elif percentage >= 80:
@@ -105,21 +119,21 @@ def add_student():
             grade = 'C'
         elif percentage >= 60:
             grade = 'D'
-        else:
-            grade = 'F'
 
-        students.insert_one({
+        student_data = {
             'srn': srn,
             'name': data['name'],
-            'age': int(data['age']),
-            'number': data['number'],
+            'age': data['age'],
+            'phone_number': data['number'],
             'semesters': semesters,
-            'percentage': percentage,  # Store the calculated percentage
-            'grade': grade             # Store the calculated grade
-        })
-        flash('Student added successfully.')
+            'percentage': percentage,
+            'grade': grade
+        }
+        students.insert_one(student_data)
+
+        flash('Student added successfully!', 'success')
         return redirect(url_for('index'))
-    
+
     return render_template('add_student.html')
 
 @app.route('/view_student/<id>')
@@ -133,38 +147,95 @@ def view_student(id):
     flash('Student not found.')
     return redirect(url_for('index'))
 
+
+
 @app.route('/edit_student/<id>', methods=['GET', 'POST'])
 def edit_student(id):
     if 'username' not in session:
         return redirect(url_for('login'))
 
+    student = students.find_one({'_id': ObjectId(id)})
+    if not student:
+        flash('Student not found.')
+        return redirect(url_for('index'))
+
     if request.method == 'POST':
         data = request.form
-        srn = data['srn'] 
 
+        # Extract and format SRN
+        srn_value = data.get('srn', '')
+        numeric_srn = ''.join(filter(str.isdigit, srn_value))
+        srn = f"SRN{int(numeric_srn):03d}" if numeric_srn else 'SRN000'
+
+        # Check for duplicate SRN
+        if students.find_one({'srn': srn, '_id': {'$ne': ObjectId(id)}}):
+            flash('A student with this SRN already exists.', 'error')
+            return redirect(url_for('edit_student', id=id))
+
+        total_marks_obtained = 0
+        total_max_marks = 0
         semesters = []
-        for sem in range(1, 4):
-            subjects = [{'subject': subj,
-                         'marks_obtained': int(data[f'sem{sem}_{subj}_marks_obtained']),
-                         'max_marks': int(data[f'sem{sem}_{subj}_max_marks'])}
-                        for subj in ['Math', 'Science', 'English']]
-            semesters.append({'semester': sem, 'subjects': subjects})
 
-        students.update_one({'_id': ObjectId(id)}, {'$set': {
-            'srn': srn,
-            'name': data['name'],
-            'age': int(data['age']),
-            'number': data['number'],
-            'semesters': semesters
-        }})
-        flash('Student updated successfully.')
+        # Extract semester data from the form
+        sem_keys = [key for key in data.keys() if 'semesters[' in key]
+        sem_count = len(set(int(key.split('[')[1].split(']')[0]) for key in sem_keys))
+
+        for sem in range(sem_count):
+            subjects = []
+            subject_names = [data.get(f'semesters[{sem}][subjects][{i}][subject]') for i in range(len(data.getlist(f'semesters[{sem}][subjects][0][subject]')))]
+            marks_obtained = [int(data.get(f'semesters[{sem}][subjects][{i}][marks_obtained]')) for i in range(len(subject_names))]
+            max_marks = [int(data.get(f'semesters[{sem}][subjects][{i}][max_marks]')) for i in range(len(subject_names))]
+            
+            for name, obtained, max_mark in zip(subject_names, marks_obtained, max_marks):
+                subjects.append({
+                    'subject': name,
+                    'marks_obtained': obtained,
+                    'max_marks': max_mark
+                })
+                total_marks_obtained += obtained
+                total_max_marks += max_mark
+            
+            semesters.append({'semester': sem + 1, 'subjects': subjects})
+
+        # Calculate percentage and grade
+        percentage = (total_marks_obtained / total_max_marks) * 100 if total_max_marks > 0 else 0
+        grade = 'F'
+        if percentage >= 90:
+            grade = 'A'
+        elif percentage >= 80:
+            grade = 'B'
+        elif percentage >= 70:
+            grade = 'C'
+        elif percentage >= 60:
+            grade = 'D'
+
+        # Update student record in database
+        result = students.update_one(
+            {'_id': ObjectId(id)},
+            {'$set': {
+                'srn': srn,
+                'name': data.get('name'),
+                'age': int(data.get('age')),
+                'phone_number': data.get('phone_number'),
+                'semesters': semesters,
+                'percentage': percentage,
+                'grade': grade
+            }}
+        )
+
+        if result.matched_count > 0:
+            if result.modified_count > 0:
+                flash('Student details updated successfully!', 'success')
+            else:
+                flash('No changes made to the student details.', 'warning')
+        else:
+            flash('Failed to update student details. Student not found.', 'error')
+        
         return redirect(url_for('index'))
-    
-    student = students.find_one({'_id': ObjectId(id)})
-    if student:
-        return render_template('edit_student.html', student=student)
-    flash('Student not found.')
-    return redirect(url_for('index'))
+
+    return render_template('edit_student.html', student=student)
+
+
 
 @app.route('/delete_student/<id>')
 def delete_student(id):
@@ -186,3 +257,6 @@ def logout():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+
+

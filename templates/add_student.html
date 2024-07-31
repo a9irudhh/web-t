@@ -5,40 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Student</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <script src="{{ url_for('static', filename='js/add_student.js') }}" defer></script>
 </head>
 <body>
     <div class="add-student-container">
         <h1 class="page-title">Add Student</h1>
-        
-        {% with messages = get_flashed_messages(with_categories=true) %}
-            {% if messages %}
-                <ul class="flash-messages">
-                    {% for category, message in messages %}
-                        <li class="{{ category }}">{{ message }}</li>
-                    {% endfor %}
-                </ul>
-            {% endif %}
-        {% endwith %}
-        
-        <form action="{{ url_for('add_student') }}" method="post" class="student-form">
-            <input type="text" name="srn" placeholder="SRN (3-digit number)" pattern="\d{3}" required class="form-input">
-            <input type="text" name="name" placeholder="Name" required class="form-input">
-            <input type="number" name="age" placeholder="Age" required class="form-input">
-            <input type="number" name="number" placeholder="Phone Number" required class="form-input">
-
-            {% for sem in range(1, 4) %}
-            <h2 class="semester-title">Semester {{ sem }}</h2>
-            {% for subj in ['Math', 'Science', 'English'] %}
-            <div class="subject-wrapper">
-                <h3 class="subject-title">{{ subj }}</h3>
-                <input type="number" name="sem{{ sem }}_{{ subj }}_marks_obtained" placeholder="Marks Obtained for 100" required class="form-input">
-                <input type="hidden" name="sem{{ sem }}_{{ subj }}_max_marks" value="100">
+        <form method="POST" action="{{ url_for('add_student') }}" class="student-form">
+            <div class="form-group">
+                <label for="name" class="form-label">Name:</label>
+                <input type="text" id="name" name="name" required class="form-input">
             </div>
-            {% endfor %}
-            {% endfor %}
-
-            <button type="submit" class="submit-button">Add Student</button>
+            <div class="form-group">
+                <label for="srn" class="form-label">SRN:</label>
+                <input type="text" id="srn" name="srn" required pattern="SRN\d{3}" title="SRN followed by 3 digits" class="form-input">
+            </div>
+            <div class="form-group">
+                <label for="age" class="form-label">Age:</label>
+                <input type="number" id="age" name="age" required class="form-input">
+            </div>
+            <div class="form-group">
+                <label for="number" class="form-label">Phone Number:</label>
+                <input type="tel" id="number" name="number" required class="form-input">
+            </div>
+            <div id="semesters-container">
+                <!-- Semesters will be added dynamically here -->
+            </div>
+            <button type="button" onclick="addSemester()" class="add-semester-button">Add Semester</button>
+            <button type="submit" class="submit-button">Submit</button>
         </form>
+        <a href="{{ url_for('index') }}" class="back-link">Back to Dashboard</a>
     </div>
 </body>
 </html>
