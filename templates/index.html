@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Student Dashboard</title>
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-        <script>
-            function confirmDelete(id) {
-                if (confirm('Are you sure you want to delete this student?')) {
-                    window.location.href = '/delete_student/' + id;
-                }
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <script>
+        function confirmDelete(id) {
+            if (confirm('Are you sure you want to delete this student?')) {
+                window.location.href = '/delete_student/' + id;
             }
-        </script>
-    </head>    
+        }
+    </script>
+</head>
 <body>
     <div class="dashboard-container">
         <h1 class="dashboard-title">Student Dashboard</h1>
@@ -63,16 +63,26 @@
             </table>
         </div>
         <div class="pagination">
+            {% set window = 1 %}
+            {% set start_page = page - window if page - window > 0 else 1 %}
+            {% set end_page = page + window if page + window <= total_pages else total_pages %}
+            
             {% if page > 1 %}
                 <a href="{{ url_for('index', page=page-1, query=query) }}" class="pagination-button prev-button">← Previous</a>
             {% else %}
                 <span class="pagination-button prev-button disabled">← Previous</span>
             {% endif %}
-
-            {% for p in range(1, total_pages + 1) %}
-                <a href="{{ url_for('index', page=p, query=query) }}" class="pagination-button {% if p == page %}active{% endif %}">{{ p }}</a>
-            {% endfor %}
-
+            
+            {% if start_page < page %}
+                <a href="{{ url_for('index', page=start_page, query=query) }}" class="pagination-button {% if start_page == page %}active{% endif %}">{{ start_page }}</a>
+            {% endif %}
+            
+            <a href="{{ url_for('index', page=page, query=query) }}" class="pagination-button active">{{ page }}</a>
+            
+            {% if end_page > page %}
+                <a href="{{ url_for('index', page=end_page, query=query) }}" class="pagination-button {% if end_page == page %}active{% endif %}">{{ end_page }}</a>
+            {% endif %}
+            
             {% if page < total_pages %}
                 <a href="{{ url_for('index', page=page+1, query=query) }}" class="pagination-button next-button">Next →</a>
             {% else %}

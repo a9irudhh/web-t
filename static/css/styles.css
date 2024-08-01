@@ -462,8 +462,10 @@ h1 {
     display: flex;
     flex-direction: column;
     align-items: center;
+    border-radius: 2%;
     margin-top: 50px; /* Adjust this value for space from the top */
     padding: 20px; /* Add padding for content spacing */
+    box-shadow: 0 4px 8px rgba(48, 8, 8, 0.1);
 }
 .dashboard-container h1 {
     text-align: center;
