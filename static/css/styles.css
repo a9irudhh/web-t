@@ -701,3 +701,80 @@ h1 {
     border-radius: 5px;
     color: #fff;
 }
+
+.pagination {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.pagination-button {
+    margin: 0 5px;
+    padding: 10px;
+    text-decoration: none;
+    color: #333;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+.pagination-button.active {
+    background-color: #007bff;
+    color: white;
+    border: 1px solid #007bff;
+}
+
+.pagination-button:hover {
+    background-color: #ddd;
+}
+
+.pagination-button.disabled {
+    color: #aaa;
+    border: 1px solid #ddd;
+    cursor: not-allowed;
+}
+
+.prev-button {
+    margin-right: 10px;
+}
+
+.next-button {
+    margin-left: 10px;
+}
+
+
+.search-container {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#search-input {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 300px;
+    margin-right: 10px;
+}
+
+.search-button {
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.search-button img {
+    width: 20px;
+    height: 20px;
+}
+
+.search-button:hover {
+    background-color: #0056b3;
+}
+
+.student-row {
+    transition: display 0.3s ease;
+}
