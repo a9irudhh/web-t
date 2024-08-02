@@ -1,0 +1,3 @@
+name,age,srn,phone_number,sem1_subject1_name,sem1_subject1_marks_obtained,sem1_subject1_max_marks,sem1_subject2_name,sem1_subject2_marks_obtained,sem1_subject2_max_marks,sem2_subject1_name,sem2_subject1_marks_obtained,sem2_subject1_max_marks
+John Doe,20,SRN001,1234567890,Math,90,100,Science,85,100,English,88,100
+Jane Smith,22,SRN002,0987654321,History,92,100,Geography,80,100,,,

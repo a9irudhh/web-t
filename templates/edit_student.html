@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,26 +13,35 @@
         }
     </script>
 </head>
+
 <body>
     <div class="edit-student-container">
-        <h1 class="edit-student-title">Edit Student Details</h1>
-        <form action="{{ url_for('edit_student', id=student._id) }}" method="POST" class="edit-student-form" onsubmit="return confirmSave();">
-            <input type="hidden" name="srn" value="{{ student.srn }}">
+        <h1 class="page-title">Edit Student Details</h1>
+        <form method="POST" action="{{ url_for('edit_student', id=student._id) }}" class="edit-student-form" data-student-id="{{ student._id }}" data-is-admin="{{ is_admin }}" onsubmit="return confirmSave()">
+            <input type="hidden" name="student_id" value="{{ student._id }}">
 
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" value="{{ student.name }}" {% if not is_admin %}readonly{% endif %} required>
+            <div class="form-group">
+                <label for="name" class="form-label">Name:</label>
+                <input type="text" id="name" name="name" value="{{ student.name }}" {% if not is_admin %}readonly{% endif %} required class="form-input">
+            </div>
+            <div class="form-group">
+                <label for="srn" class="form-label">SRN:</label>
+                <input type="text" id="srn" name="srn" value="{{ student.srn }}" readonly class="form-input">
+            </div>
+            <div class="form-group">
+                <label for="age" class="form-label">Age:</label>
+                <input type="number" id="age" name="age" value="{{ student.age }}" {% if not is_admin %}readonly{% endif %} required class="form-input">
+            </div>
+            <div class="form-group">
+                <label for="phone_number" class="form-label">Phone Number:</label>
+                <input type="tel" id="phone_number" name="phone_number" value="{{ student.phone_number }}" {% if not is_admin %}readonly{% endif %} required class="form-input">
+            </div>
 
-            <label for="age">Age</label>
-            <input type="number" id="age" name="age" value="{{ student.age }}" {% if not is_admin %}readonly{% endif %} required>
-
-            <label for="phone_number">Phone Number</label>
-            <input type="text" id="phone_number" name="phone_number" value="{{ student.phone_number }}" {% if not is_admin %}readonly{% endif %} required>
-
-            <div id="semesters">
+            <div id="semesters-container">
                 {% for sem in student.semesters %}
-                <div class="edit-student-semester" id="semester-{{ loop.index }}">
-                    <h2 class="edit-student-semester-title">Semester {{ sem.semester }}</h2>
-                    <table class="edit-student-table">
+                <div class="semester-group" id="semester-{{ loop.index0 }}">
+                    <h2 class="semester-title">Semester {{ sem.semester }}</h2>
+                    <table class="semester-table">
                         <thead>
                             <tr>
                                 <th>Subject Name</th>
@@ -40,12 +50,12 @@
                                 <th>Actions</th>
                             </tr>
                         </thead>
-                        <tbody id="subjects-{{ loop.index }}">
+                        <tbody id="subjects-{{ loop.index0 }}">
                             {% for subj in sem.subjects %}
                             <tr>
-                                <td><input type="text" name="semesters[{{ loop.index0 }}][subjects][{{ loop.index0 }}][name]" value="{{ subj.subject }}" {% if not is_admin %}readonly{% endif %} required></td>
-                                <td><input type="number" name="semesters[{{ loop.index0 }}][subjects][{{ loop.index0 }}][marks_obtained]" value="{{ subj.marks_obtained }}" {% if not is_admin %}readonly{% endif %} required></td>
-                                <td><input type="number" name="semesters[{{ loop.index0 }}][subjects][{{ loop.index0 }}][max_marks]" value="{{ subj.max_marks }}" {% if not is_admin %}readonly{% endif %} required></td>
+                                <td><input type="text" name="semesters[{{ loop.index0 }}][subjects][{{ loop.index0 }}][subject]" value="{{ subj.subject }}" {% if not is_admin %}readonly{% endif %} required class="form-input"></td>
+                                <td><input type="number" name="semesters[{{ loop.index0 }}][subjects][{{ loop.index0 }}][marks_obtained]" value="{{ subj.marks_obtained }}" {% if not is_admin %}readonly{% endif %} required class="form-input"></td>
+                                <td><input type="number" name="semesters[{{ loop.index0 }}][subjects][{{ loop.index0 }}][max_marks]" value="{{ subj.max_marks }}" {% if not is_admin %}readonly{% endif %} required class="form-input"></td>
                                 {% if is_admin %}
                                 <td><button type="button" onclick="removeSubject(this)">Remove Subject</button></td>
                                 {% else %}
@@ -56,23 +66,24 @@
                         </tbody>
                     </table>
                     {% if is_admin %}
-                    <button type="button" class="add-subject-button" data-semester="{{ loop.index }}" onclick="addSubject(this)">Add Subject</button>
+                    <button type="button" class="add-subject-button" data-semester="{{ loop.index0 }}" onclick="addSubject(this)">Add Subject</button>
                     <button type="button" class="remove-semester-button" onclick="removeSemester(this)">Remove Semester</button>
                     {% endif %}
                 </div>
                 {% endfor %}
             </div>
 
-            <div class="edit-student-actions">
+            <div class="form-actions">
                 {% if is_admin %}
-                <button type="button" class="add-semester-button" onclick="addSemester()">Add Semester</button>
-                <button type="submit" class="edit-student-action-button">Save Changes</button>
+                <button type="button" onclick="addSemester()" class="add-semester-button">Add Semester</button>
+                <button type="submit" class="submit-button">Save Changes</button>
                 {% else %}
                 <p>You do not have permission to edit this student.</p>
                 {% endif %}
-                <a href="{{ url_for('index') }}" class="edit-student-action-button">Cancel</a>
+                <a href="{{ url_for('index') }}" class="back-link">Cancel</a>
             </div>
         </form>
     </div>
 </body>
+
 </html>

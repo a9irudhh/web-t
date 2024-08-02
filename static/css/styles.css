@@ -97,7 +97,8 @@ h1 {
     margin-bottom: 20px;
 }
 
-.add-student-button, .logout-button {
+.add-student-button,
+.logout-button {
     padding: 10px 20px;
     text-decoration: none;
     border-radius: 4px;
@@ -105,11 +106,13 @@ h1 {
 }
 
 .add-student-button {
-    background-color: #4CAF50; /* Green */
+    background-color: #4CAF50;
+    /* Green */
 }
 
 .logout-button {
-    background-color: #FF5733; /* Red */
+    background-color: #FF5733;
+    /* Red */
 }
 
 .student-table {
@@ -118,7 +121,8 @@ h1 {
     margin-bottom: 20px;
 }
 
-.student-table th, .student-table td {
+.student-table th,
+.student-table td {
     border: 1px solid #ddd;
     padding: 8px;
     text-align: left;
@@ -139,16 +143,19 @@ h1 {
 }
 
 .view-button {
-    background-color: #007BFF; /* Blue */
+    background-color: #007BFF;
+    /* Blue */
 }
 
 .edit-button {
-    background-color: #28A745; /* Green */
+    background-color: #28A745;
+    /* Green */
     margin-left: 10px;
 }
 
 .delete-button {
-    background-color: #DC3545; /* Red */
+    background-color: #DC3545;
+    /* Red */
     margin-left: 10px;
 }
 
@@ -292,17 +299,20 @@ h1 {
 .subject-wrapper .form-input {
     flex: 1;
     margin-right: 10px;
-    max-width: 170px; /* Adjust the width as needed */
+    max-width: 170px;
+    /* Adjust the width as needed */
 }
 
 /* Add space between subject names and input fields */
 .subject-title {
-    margin-bottom: 10px; /* Add space below subject names */
+    margin-bottom: 10px;
+    /* Add space below subject names */
 }
 
 /* Add more space between subject wrappers */
 .subject-wrapper {
-    margin-bottom: 20px; /* Increase space between each subject */
+    margin-bottom: 20px;
+    /* Increase space between each subject */
 }
 
 /* Container for the view student page */
@@ -341,7 +351,8 @@ h1 {
     margin-bottom: 20px;
 }
 
-.view-student-table th, .view-student-table td {
+.view-student-table th,
+.view-student-table td {
     border: 1px solid #ddd;
     padding: 8px;
     text-align: left;
@@ -454,6 +465,7 @@ h1 {
 .edit-buttons .view-button {
     margin-right: 10px;
 }
+
 .edit-buttons .delete-button {
     margin-left: 10px;
 }
@@ -463,45 +475,59 @@ h1 {
     flex-direction: column;
     align-items: center;
     border-radius: 2%;
-    margin-top: 50px; /* Adjust this value for space from the top */
-    padding: 20px; /* Add padding for content spacing */
+    margin-top: 50px;
+    /* Adjust this value for space from the top */
+    padding: 20px;
+    /* Add padding for content spacing */
     box-shadow: 0 4px 8px rgba(48, 8, 8, 0.1);
 }
+
 .dashboard-container h1 {
     text-align: center;
     margin-bottom: 20px;
 }
+
 .dashboard-container .top-actions {
     display: flex;
     justify-content: space-between;
     width: 100%;
     margin-bottom: 20px;
 }
+
 .dashboard-container .top-actions a {
     padding: 10px 20px;
     text-decoration: none;
     border-radius: 4px;
     color: white;
 }
+
 .dashboard-container .top-actions .add-student-button {
-    background-color: #4CAF50; /* Green */
+    background-color: #4CAF50;
+    /* Green */
 }
+
 .dashboard-container .top-actions .logout-button {
-    background-color: #FF5733; /* Red */
+    background-color: #FF5733;
+    /* Red */
 }
+
 .dashboard-container .student-table {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 20px;
 }
-.dashboard-container .student-table th, .dashboard-container .student-table td {
+
+.dashboard-container .student-table th,
+.dashboard-container .student-table td {
     border: 1px solid #ddd;
     padding: 8px;
     text-align: left;
 }
+
 .dashboard-container .student-table th {
     background-color: #f2f2f2;
 }
+
 .dashboard-container .action-button {
     display: inline-block;
     margin: 0 5px;
@@ -511,50 +537,79 @@ h1 {
     border-radius: 4px;
     cursor: pointer;
 }
+
 .dashboard-container .view-button {
-    background-color: #007BFF; /* Blue */
+    background-color: #007BFF;
+    /* Blue */
 }
+
 .dashboard-container .edit-button {
-    background-color: #28A745; /* Green */
+    background-color: #28A745;
+    /* Green */
     margin-left: 10px;
 }
+
 .dashboard-container .delete-button {
-    background-color: #DC3545; /* Red */
+    background-color: #DC3545;
+    /* Red */
     margin-left: 10px;
 }
 
 /* Responsive design for smaller screens */
 @media (max-width: 768px) {
-    .container, .login-container, .register-container, .add-student-container, .view-student-container {
+
+    .container,
+    .login-container,
+    .register-container,
+    .add-student-container,
+    .view-student-container {
         width: 90%;
     }
+
     .dashboard-container {
-        margin-top: 20px; /* Reduce space from the top */
-        padding: 10px; /* Reduce padding for content spacing */
+        margin-top: 20px;
+        /* Reduce space from the top */
+        padding: 10px;
+        /* Reduce padding for content spacing */
         margin-left: 200px;
         margin-right: 100px;
     }
+
     .dashboard-container .top-actions {
         display: flex;
-        flex-direction: row; /* Ensure buttons are side by side */
-        justify-content: space-between; /* Maintain spacing */
+        flex-direction: row;
+        /* Ensure buttons are side by side */
+        justify-content: space-between;
+        /* Maintain spacing */
         width: 100%;
     }
+
     .dashboard-container .top-actions a {
         padding: 10px 10px;
         text-align: center;
         flex: 1;
-        margin: 0 5px; /* Add margin to space buttons */
+        margin: 0 5px;
+        /* Add margin to space buttons */
     }
-    .dashboard-container .student-table th, .dashboard-container .student-table td {
-        padding: 5px; /* Reduce padding in table cells */
+
+    .dashboard-container .student-table th,
+    .dashboard-container .student-table td {
+        padding: 5px;
+        /* Reduce padding in table cells */
     }
+
     .dashboard-container .action-button {
-        padding: 7px; /* Reduce padding in action buttons */
-        margin: 5px 0; /* Adjust margin for vertical spacing */
+        padding: 7px;
+        /* Reduce padding in action buttons */
+        margin: 5px 0;
+        /* Adjust margin for vertical spacing */
     }
-    .dashboard-container .view-button, .dashboard-container .edit-button, .dashboard-container .delete-button {
-        margin-left: 0; /* Reset margin for action buttons */
+
+    .dashboard-container .view-button,
+    .dashboard-container .edit-button,
+    .dashboard-container .delete-button {
+        margin-left: 0;
+        /* Reset margin for action buttons */
     }
 }
 
@@ -584,7 +639,8 @@ h1 {
 }
 
 .submit-button {
-    background-color: #4CAF50; /* Green color */
+    background-color: #4CAF50;
+    /* Green color */
     color: white;
     border: none;
     padding: 15px 20px;
@@ -598,7 +654,8 @@ h1 {
 }
 
 .add-semester-button {
-    background-color: #4CAF50; /* Green color */
+    background-color: #4CAF50;
+    /* Green color */
     color: white;
     border: none;
     padding: 10px 15px;
@@ -612,7 +669,8 @@ h1 {
 }
 
 .add-subject-button {
-    background-color: #4CAF50; /* Green color */
+    background-color: #4CAF50;
+    /* Green color */
     color: white;
     border: none;
     padding: 8px 12px;
@@ -628,14 +686,16 @@ h1 {
 .semester {
     margin-bottom: 20px;
     padding: 15px;
-    background-color: #e8f5e9; /* Light green background */
+    background-color: #e8f5e9;
+    /* Light green background */
     border-radius: 5px;
 }
 
 .subject-wrapper {
     margin-bottom: 10px;
     padding: 10px;
-    background-color: #f1f8e9; /* Lighter green background */
+    background-color: #f1f8e9;
+    /* Lighter green background */
     border-radius: 5px;
 }
 
@@ -650,7 +710,8 @@ h1 {
 
 
 .remove-subject-button {
-    background-color: #f44336; /* Red color */
+    background-color: #f44336;
+    /* Red color */
     color: white;
     border: none;
     padding: 5px 10px;
@@ -664,18 +725,23 @@ h1 {
 }
 
 .remove-subject-button:hover {
-    background-color: #c62828; /* Darker red on hover */
+    background-color: #c62828;
+    /* Darker red on hover */
 }
 
 
 /* Green button style for adding */
-.add-subject-button, .add-semester-button {
-    background-color: #28a745; /* Green */
+.add-subject-button,
+.add-semester-button {
+    background-color: #28a745;
+    /* Green */
 }
 
 /* Red button style for removing */
-.remove-subject-button, .remove-semester-button {
-    background-color: #dc3545; /* Red */
+.remove-subject-button,
+.remove-semester-button {
+    background-color: #dc3545;
+    /* Red */
     padding: 5px 10px;
 }
 
@@ -687,18 +753,21 @@ h1 {
     border-radius: 5px;
 }
 
-.subject-wrapper, .semester {
+.subject-wrapper,
+.semester {
     margin-bottom: 15px;
 }
 
-.subject-title, .semester-title {
+.subject-title,
+.semester-title {
     margin: 0;
     font-size: 18px;
     font-weight: bold;
 }
 
 .remove-semester-button {
-    background-color: #dc3545; /* Red */
+    background-color: #dc3545;
+    /* Red */
     border: none;
     border-radius: 5px;
     color: #fff;
@@ -779,4 +848,103 @@ h1 {
 
 .student-row {
     transition: display 0.3s ease;
+}
+
+.file-upload-container {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 10px; /* Adjust as needed */
+}
+
+.upload-button {
+    background-color: #007bff; /* Adjust to match your button color */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    display: inline-block;
+    margin-right: 10px; /* Space between the choose file button and the upload button */
+}
+
+.upload-button:hover {
+    background-color: #0056b3; /* Adjust hover color */
+}
+
+button {
+    background-color: #007bff; /* Adjust to match your button color */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    display: inline-block;
+}
+
+button:hover {
+    background-color: #0056b3; /* Adjust hover color */
+}
+
+.search-filter-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px; /* Adjust as needed */
+}
+
+.search-container {
+    margin-right: 10px; /* Space between search and filter */
+}
+
+.filter-container {
+    position: relative;
+    display: inline-block;
+    border: 2px solid #ddd; /* Border around the filter button */
+    border-radius: 4px; /* Optional: Rounded corners */
+    padding: 5px; /* Space between the border and content */
+}
+
+.filter-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.filter-button img {
+    width: 30px; /* Adjust the size of the icon */
+    height: 20px;
+    margin-right: 5px; /* Space between the icon and text */
+}
+
+.filter-label {
+    font-size: 14px;
+    color: #333; /* Adjust the color of the text */
+    vertical-align: middle;
+}
+
+.filter-menu {
+    display: none;
+    position: absolute;
+    top: 30px;
+    right: 0;
+    background-color: black;
+    border: 2px solid black;
+    border-radius: 4px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.filter-menu.show {
+    display: block;
+}
+
+.filter-menu select {
+    width: 100px;
+    padding: 5px;
+    border: none;
+    border-radius: 4px;
 }

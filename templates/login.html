@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
+
 <body>
     <div class="container login-container">
         <h1 class="login-title">Login</h1>
@@ -20,15 +22,17 @@
             </div>
             <button type="submit" class="submit-button">Login</button>
         </form>
-        <p class="register-redirect">Don't have an account? <a href="{{ url_for('register') }}" class="register-link">Register here</a></p>
+        <p class="register-redirect">Don't have an account? <a href="{{ url_for('register') }}"
+                class="register-link">Register here</a></p>
         {% with messages = get_flashed_messages(with_categories=True) %}
-            {% if messages %}
-                {% set last_message = messages[-1] %}
-                <ul class="flash-messages">
-                    <li class="{{ last_message[0] }}">{{ last_message[1] }}</li>
-                </ul>
-            {% endif %}
+        {% if messages %}
+        {% set last_message = messages[-1] %}
+        <ul class="flash-messages">
+            <li class="{{ last_message[0] }}">{{ last_message[1] }}</li>
+        </ul>
+        {% endif %}
         {% endwith %}
     </div>
 </body>
+
 </html>

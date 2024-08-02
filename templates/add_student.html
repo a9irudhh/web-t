@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     <script src="{{ url_for('static', filename='js/add_student.js') }}" defer></script>
 </head>
+
 <body>
     <div class="add-student-container">
         <h1 class="page-title">Add Student</h1>
@@ -17,7 +19,8 @@
             </div>
             <div class="form-group">
                 <label for="srn" class="form-label">SRN:</label>
-                <input type="text" id="srn" name="srn" required pattern="SRN\d{3}" title="SRN followed by 3 digits" class="form-input">
+                <input type="text" id="srn" name="srn" required pattern="SRN\d{3}" title="SRN followed by 3 digits"
+                    class="form-input">
             </div>
             <div class="form-group">
                 <label for="age" class="form-label">Age:</label>
@@ -36,4 +39,5 @@
         <a href="{{ url_for('index') }}" class="back-link">Back to Dashboard</a>
     </div>
 </body>
+
 </html>
